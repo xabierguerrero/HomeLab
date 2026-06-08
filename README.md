@@ -9,7 +9,7 @@ Todos los servicios están alojados en docker y segemtados en diferentes redes s
 ### Proxy Net
 - Nginx Proxy Manager (NPM) 
 
-  Nota: NPM está en está red y en todas las demás, actua como punto de entrada y redireige al servicio pertinente ahorrandome potenciales problemas de puertos.
+  Nota: NPM está en está red y en todas las demás, actúa como punto de entrada y redirige al servicio pertinente ahorrándome potenciales problemas de puertos.
 
 ### Tools Net
 - It-tools
