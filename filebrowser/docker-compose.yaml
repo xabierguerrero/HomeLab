@@ -1,0 +1,16 @@
+services:
+  filebrowser:
+    image: filebrowser/filebrowser
+    container_name: filebrowser
+    user: 1000:1000
+    restart: unless-stopped
+    volumes:
+      - /srv/docker/filebrowser/config:/config
+      - /srv/docker/filebrowser/filebrowser.db:/database/filebrowser.db
+      - /mnt/almacenamiento/jellyfin:/srv
+    networks:
+      - media_net
+
+networks:
+  media_net:
+    external: true
