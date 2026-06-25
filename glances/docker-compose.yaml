@@ -1,0 +1,18 @@
+services:
+  glances:
+    iamge: nicolargo/glances:latest-full
+    container_name: glances
+    hostname: glances_Evaru
+    restart: unless-stopped
+    pid: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/os-release:/etc/os-release:ro
+    eviroment:
+      - "Glances_OPT=-w"
+    networks:
+      - devops_net
+      
+networks:
+  devops_net:
+    external:true
