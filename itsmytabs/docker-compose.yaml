@@ -1,0 +1,15 @@
+services:
+  app:
+    image: louislam/its-mytabs:latest
+    restart: unless-stopped
+    container_name: itsmytabs
+    hostname: itsmytabs_Evaru
+    volumes:
+      - /srv/docker/its-mytabs:/app/data
+      
+    networks:
+      - hobbies_net
+    
+networks:
+  hobbies_net:
+    external: true
