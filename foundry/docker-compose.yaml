@@ -1,0 +1,23 @@
+services:
+  foundry:
+    image: felddy/foundryvtt:latest
+    container_name: foundryvtt
+    hostname: foundry_Evaru
+    restart: unless-stopped
+    user: 1000:1000
+    environment:
+      - FOUNDRY_ADMIN_KEY=${FOUNDRY_ADMIN_KEY}
+      - FOUNDRY_LICENSE_KEY=${FOUNDRY_LICENSE_KEY}
+      - FOUNDRY_USERNAME=${FOUNDRY_USERNAME}
+      - FOUNDRY_PASSWORD=${FOUNDRY_PASSWORD}
+      - FOUNDRY_HOSTNAME=foundryxabier.duckdns.org
+      - TZ=Europe/Madrid
+      - CONTAINER_CACHE=/data/container_cache
+    volumes:
+      - /srv/docker/foundry/foundrydata:/data
+
+    networks:
+      - hobbies_net
+networks:
+  hobbies_net:
+    external: true
