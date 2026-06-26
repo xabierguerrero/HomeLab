@@ -1,0 +1,23 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    hostname: Page-Evaru
+    restart: unless-stopped
+    volumes:
+      - /srv/docker/homepage/config:/app/config 
+      - /var/run/docker.sock:/var/run/docker.sock:ro 
+      - /mnt/almacenamiento:/mnt/almacenamiento:ro # HDD_Raid
+      - /srv:/srv:ro #SSD_Raid
+      - /var:/var:ro 
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: page.evaru.home # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
+      PUID: 1000
+      PGID: 1000
+
+    networks:
+      - devops_net
+
+networks:
+  devops_net:
+    external: true
