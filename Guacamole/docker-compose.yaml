@@ -1,0 +1,49 @@
+services:
+  guacd:
+    container_name: guacd
+    hostname: guacd_Evaru
+    restart: unless-stopped
+    image: jwetzell/guacamole:latest
+
+    networks:
+      - devops_net
+
+  guacweb:
+    container_name: guac_web
+    hostname: guacweb_Evaru
+    restart: unless-stopped
+    image: jwetzell/guacamole:latest
+
+    environment:
+      MYSQL_DATABASE: guacamole_db
+      MYSQL_HOSTNAME: guacamole-sql
+      MYSQL_PASSWORD: ${MYSQL_PASS}
+      MYSQL_USER: sysad
+      GUACD_HOSTNAME: guacd
+
+    depends_on:
+      - guacamole-sql
+      - guacd
+
+    networks:
+      - devops_net
+
+
+  guacamole-sql:
+    container_name: guac-sql
+    hostname: guacsql_Evaru
+    restart: unless-stopped
+    image: mysql
+
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASS}
+
+    volumes:
+      - /srv/docker/guacamole/dbdata:/var/lib/mysql
+
+    networks:
+      - devops_net
+
+networks:
+  devops_net:
+    external: true
