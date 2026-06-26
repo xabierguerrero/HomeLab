@@ -1,7 +1,0 @@
-Apache guamole requiere de un par de pasos extra para poder desplagarlo y que funcione correctamente.
-
-Basicamente hay que crear primero la bd dentro del contenedor de MySQL y luego conectarse a ella desde el otro contenedor.
-
-En un futuro detallaré los pasos en este documento junto al enlace que al video que me enseñó como hacerlo.
-
-Además todavia hay que revisar por que se borra el usuario creado y volvemos al ususario por defecto cuando se reinicia el sericio.
