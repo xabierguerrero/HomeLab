@@ -11,7 +11,7 @@ services:
       - /mnt/almacenamiento/jellyfin:/srv
     networks:
       - media_net
-
+      
 networks:
   media_net:
     external: true
